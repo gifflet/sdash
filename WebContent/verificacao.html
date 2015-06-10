@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="sdash"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form action="usucontroller.do" method="post" class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <input type="text" class="input-block-level" name="email" placeholder="Email address">
+        <input type="password" class="input-block-level" name="senha" placeholder="Password">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <br><br>
+            <div class="alert alert-error">
+    			<button type="button" class="close" data-dismiss="alert">×</button>
+    				<h4>Acesso Negado!</h4>
+    					Usuário ou Senha invalido!!
+    		</div>
+      </form>
+
+    </div>
+  </body>
+</html>
