@@ -10,6 +10,8 @@ CREATE TABLE tarefa
   situacao character varying(30) NOT NULL,
   mensagem character varying NOT NULL,
   finalizacao character varying(30) NOT NULL,
+  auth character varying(30),
+  idusuario integer,
   CONSTRAINT tarefa_pkey PRIMARY KEY (id)
 )
 WITH (

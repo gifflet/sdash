@@ -1,140 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ include file="include/header.jsp"%>
 <%@ page import ="java.util.List"%>
-<%@ page import ="entidades.Tarefa"%>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-	<meta charset="UTF-8">
-	<meta name="description" content="sdash"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-	<title>sdash</title>
-	<link rel="stylesheet" href="css/bootstrap.css"/>
-	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-</head>
-<body>
-
-	<nav class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<div class="container">
-				<!--btn-navbar esta classe √© usada como alternador pra o conteudo colaps¬°vel-->
-				<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="#inicio" class="brand">Sistema Sdash</a>
-				<!--Tudo que for escondido a menos de 940px-->
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Tarefas
-								<b class="caret"></b>
-							</a>
-								<ul class="dropdown-menu">
-									<li><a href="tarefacontroller.do?acao=cad">Cadastrar</a></li>
-									<li><a href="#">Buscar por C√≥digo</a></li>
-									<li><a href="#">Buscar por Nome</a></li>
-								</ul>
-						</li>
-						<li><a href="#">Link 2</a></li>
-						<li><a href="#">Link 3</a></li>
-						<li><a href="#">Link 4</a></li>
-						<li><a href="usucontroller.do">Sair</a></li>
-					</ul>
-					<form action="" class="navbar-form pull-right">
-						<input type="text" class="span2">
-						<button class="btn btn-inverse">Buscar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</nav>
-	<header class="jumbotron subhead">
-		<div class="container">
-			<h1>Student Dashboard - Sdash</h1>
-			<p>Alunos: Carlos Marx, Jailton Pereira, Luiz Sim√µes e Michelle Mendes</p>
-		</div>
+<section id="inicio">
+	<header class="page-header">
+		<h1>Sistema Sdash</h1>
 	</header>
-		<div class="container">
-			<div class="row">
-				<aside class="span3 bs-docs-sidebar">
-					<ul class="nav nav-list bs-docs-sidenav">
-						<li><a href="#agenda"><i class="icon-chevron-right"></i>Agenda</a></li>
-						<li><a href="#heroi"><i class="icon-chevron-right"></i>Projetos</a></li>
-						<li><a href="#"><i class="icon-chevron-right"></i>Avalia√ß√£o</a></li>
-						<li><a href="#"><i class="icon-chevron-right"></i>Estat√≠stica</a></li>
-						<li><a href="#"><i class="icon-chevron-right"></i>Desempenho</a></li>
-					</ul>
-				</aside>
-				<div class="span9">
-		<section id="inicio">
-				<header class="page-header">
-					<h1>Sistema Sdash</h1>
-				</header>
-				<aside class="hero-unit">
-					<h2>Objetivo</h2>
-					<p>O sdash √© uma ferramenta desenvolvida para gerenciamento de tarefas acad√™mica. O Sdash √© um sistema que permite a cria√ß√£o, armazenamento e administra√ß√£o de conte√∫do
-					de forma din√¢mica, consistentemente organizada, permitindo que o mesmo seja modificado, removido e adicionado com facilidade. Essa ferramenta tem como objetivo gerenciar as tarefas e
-					acompanhar a cadeia de atividades do estudantes, assim como gerar relat√≥rios de desempenho<p>
-					<p><a href="" class="btn btn-primary btn-large pull-right">Saiba Mais</a></p>
-				</aside>
-			</section>
-					
-			<section id="agenda">
-				<header class="page-header">
-					<h1>Agenda</h1>
-				</header>				
-			<table class="table table-bordered table-hover">
-			<caption><h3>Tarefas Agendadas</h3></caption>
-			<thead>
-			<tr>
-				<th>C√≥digo</th><th>Nome</th><th>Disciplina</th><th>Situa√ß√£o</th><th>Mensgem</th><th>Data de Finaliza√ß√£o</th><th>A√ß√£o</th>
-			</tr>
-			</thead>
-			<tbody>
+	<aside class="hero-unit">
+		<h2>Objetivo</h2>
+		<p>O sdash È uma ferramenta desenvolvida para gerenciamento de tarefas acadÍmica. O Sdash È um sistema que permite a criaÁ„o, armazenamento e administraÁ„o de conte˙do
+		de forma din‚mica, consistentemente organizada, permitindo que o mesmo seja modificado, removido e adicionado com facilidade. Essa ferramenta tem como objetivo gerenciar as tarefas e
+		acompanhar a cadeia de atividades do estudantes, assim como gerar relatÛrios de desempenho<p>
+	</aside>
+</section>
+<br>
+<section id="disciplina">
+	<header class="page-header">
+		<h1>Disciplina</h1>
+	</header>				
+	<table class="table table-bordered table-hover">
+	<caption><h3>Disciplinas Matriculadas</h3></caption>
+	<thead>
+	<tr class="label-inverse" style="color: #fff">
+		<th>CÛdigo</th><th>Nome</th><th>Professor</th><th>Semestre</th><th>MÈtodo de AvaliaÁ„o</th><th><a href="disciplinacontroller.do?acao=cad&idusu=<%=idusu%>">Novo Registro</a></th>
+	</tr>
+	</thead>
+	<tbody>
+	<%
+	int media;
+	List<Disciplina> disclista = (List<Disciplina>)request.getAttribute("disclista");
+	for (Disciplina disciplina: disclista){
+	%>
+	<tr>
+	<td><%=disciplina.getId()%></td>
+	<td><%=disciplina.getNome()%></td>
+	<td><%=disciplina.getProfessor()%></td>
+	<td ><%=disciplina.getSemestre()%></td>
+	<td><%=disciplina.getSituacao()%></td>
+	<td><a href="disciplinacontroller.do?acao=exc&id=<%=disciplina.getId()%>&idusu=<%=idusu%>">Excluir</a>
+		| <a href="disciplinacontroller.do?acao=alt&id=<%=disciplina.getId()%>&idusu=<%=idusu%>">Alterar</a>
+	</td>
+	</tr>
+	</tbody>
+	<%
+		}
+	%>
+	</table>
+</section>
+<br>
+<section id="agenda">
+	<header class="page-header">
+		<h1>Agenda</h1>
+	</header>				
+	<table class="table table-bordered table-hover">
+	<caption><h3>Tarefas Agendadas</h3></caption>
+	<thead>
+	<tr class="label-inverse" style="color: #fff">
+		<th>CÛdigo</th><th>Nome</th><th>Disciplina</th><th>SituaÁ„o</th><th>Mensgem</th><th>Data de FinalizaÁ„o</th><th><a href="tarefacontroller.do?acao=cad&idusu=<%=idusu%>">Novo Registro</a></th>
+	</tr>
+	</thead>
+	<tbody>
+	<%
+	double cont=0, cont1=0, cont2=0, cont3=0, cont4=0;
+	List<Tarefa> lista = (List<Tarefa>)request.getAttribute("lista");
+	for (Tarefa tarefa: lista){
+		if(tarefa.getFinalizado().equals("Finalizado")){
+			%><tr class="success">
 		<%
-		List<Tarefa> lista = (List<Tarefa>)request.getAttribute("lista");
-		for (Tarefa tarefa: lista){
-		%>
-		<tr>
-			<td><%=tarefa.getId()%></td>
-			<td><%=tarefa.getNome()%></td>
-			<td><%=tarefa.getDisciplina()%></td>
-			<td><%=tarefa.getFinalizado()%></td>
-			<td><%=tarefa.getDescricao()%></td>
-			<td><%=tarefa.getDataFinalizacao()%></td>
-			<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>#agenda">Excluir</a>
-				| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>">Alterar</a>
-			</td>
-		</tr>
-			</tbody>
+		}else{
+			%><tr class="error">
 		<%
 		}
 		%>
-		</table>
-		</section>		
+	<td><%=tarefa.getId()%></td>
+	<td><%=tarefa.getNome()%></td>
+	<td><%=tarefa.getDisciplina()%></td>
+	<td ><%=tarefa.getFinalizado()%></td>
+	<td><%=tarefa.getDescricao()%></td>
+	<td><%=tarefa.getDataFinalizacao()%></td>
+	<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Excluir</a>
+		| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Alterar</a>
+	</td>
+	</tr>
+	</tbody>
+		<%
+			if(tarefa.getFinalizado().equals("Finalizado"))
+				cont++;
+			else
+				cont1++;
+		}
+		%>
+	</table>
+</section>
+<br>
+<section id="avaliacao">
+	<header class="page-header">
+		<h1>AvaliaÁ„o</h1>
+	</header>
+	<table class="table table-bordered">
+	<caption><h3>Notas das Disciplinas</h3></caption>
+	<thead>
+	<tbody>
+	<tr class="label-inverse" style="color: #fff">
+		<th>Disciplina</th><th>MÈtodo de AvaliaÁ„o</th><th>Nota1</th><th>Nota2</th><th>Nota3</th><th>Nota4</th><th>Nota5</th><th colspan="2">MÈdia</th>
+	</tr>
+
+	<%
+	for (Disciplina disciplina: disclista){
+		cont2++;
+	%>
+	<tr>
+	<form action="disciplinacontroller.do?acao=aval&idusu=<%=idusu%>" method="post" class="form-signin">           	
+		<input type="hidden" readonly="readonly" name="id" size="10" value="<%=disciplina.getId()%>"/>
+	    <td><input class="input-small" type="text" value="<%=disciplina.getNome()%>" name="nome" readonly="readonly"/></td>
+	    <input type="hidden" class="input-block-level" value="<%=disciplina.getProfessor()%>"name="professor" required/>
+	    <input type="hidden" class="input-block-level" value="<%=disciplina.getSemestre()%>"name="semestre" required/></td>
+        <td><select class="input-medium" readonly="readonly" name="situacao">
+          <%
+		    String estado1 = "";
+			String estado2 = "";
+			String estado3 = "";
+			   switch(disciplina.getSituacao())
+			   {
+				   case "Media Geometrica": estado1 = "selected"; break; 
+				   case "Media Aritimetica": estado2 = "selected"; break;
+				   case "Media Ponderada": estado3 = "selected"; break; 			   
+			   }
+		  %>
+            <option value="Media Geometrica" <%=estado1 %>>Media Geometrica</option>
+            <option value="Media Aritimetica"<%=estado2 %>>Media Aritimetica</option>
+            <option value="Media Ponderada" <%=estado3 %>>Media Ponderada</option>
+          </select>
+		</td>
+		<%
+		if(disciplina.getSituacao().equals("Media Ponderada")){%>
+	        <td><input class="span1" type="text" name="pond1" placeholder="Peso" required><input class="span1" type="text" name="nota1" value="<%=disciplina.getNota1()%>" required></td>
+			<td><input class="span1" type="text" name="pond2" placeholder="Peso" required><input class="span1" type="text" name="nota2" value="<%=disciplina.getNota2()%>" required></td>
+			<td><input class="span1" type="text" name="pond3" placeholder="Peso" required><input class="span1" type="text" name="nota3" value="<%=disciplina.getNota3()%>" required></td>
+			<td><input class="span1" type="text" name="pond4" placeholder="Peso" required><input class="span1" type="text" name="nota4" value="<%=disciplina.getNota4()%>" required></td>
+			<td><input class="span1" type="text" name="pond5" placeholder="Peso" required><input class="span1" type="text" name="nota5" value="<%=disciplina.getNota5()%>" required></td>
+	<% }
+		else{%>
+			<td><input class="span1" type="text" name="nota1" value="<%=disciplina.getNota1()%>" required></td>
+			<td><input class="span1" type="text" name="nota2" value="<%=disciplina.getNota2()%>" required></td>
+			<td><input class="span1" type="text" name="nota3" value="<%=disciplina.getNota3()%>" required></td>
+			<td><input class="span1" type="text" name="nota4" value="<%=disciplina.getNota4()%>" required></td>
+			<td><input class="span1" type="text" name="nota5" value="<%=disciplina.getNota5()%>" required></td>
+	<%
+		}
+		%>
+		<td><input class="span1" type="text" name="resultado" readonly value="<%=disciplina.getResultado()%>"></td>
+        <td><input class="btn btn-primary" type="submit" name="submit" value="Calcular"></td>
+        <%
+        	if(disciplina.getResultado()>=5){
+        		cont3++;
+        	}
+        	else
+        		cont4++;
+        %>
+    </form>
+	</td>
+	</tr>
+	</tbody>
+	<%
+	}
+	%>
+	</thead>
+	</table>
+</section>
+<br>
+<section id="estatistica">
+	<header class="page-header">
+		<h1>EstatÌstica</h1>
+	</header>
+	<h3>Tarefas</h3>
+	<%=String.format("%.2f", 100*cont/(cont1+cont))%>% Concluido<div class="progress progress-success progress-striped">
+  			<div class="bar" style="width: <%=(100*cont/(cont1+cont))%>%;"></div>
+  		</div>
+  	<%=String.format("%.2f", 100*cont1/(cont1+cont))%>% Pendente<div class="progress progress-danger progress-striped">
+  			<div class="bar" style="width: <%=(100*cont1/(cont1+cont))%>%;"></div>
+  		</div>
+  		Total de Tarefas: <%=cont1+cont%><br><br>
+  	<h3>Desempenho</h3>
+  	Disciplina Matriculada: <%=cont2%><br>
+  	Disciplina Aprovada: <%=cont3%><br>
+  	Disciplina Reprovada: <%=cont4%><br>
+  	Aproveitamente: <%=String.format("%.2f", 100*cont3/(cont3+cont4))%>% <br><br>	
+</section>
+<br>
 		</div>
 	</div>
 </div>
-
-	 <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p class="pull-right"><a href="#">Voltar ao topo</a></p>
-        <p>Instituto de Matem√°tica - <a href="https://www.ufba.br/" target="_blank">Universidade Federal da Bahia-(UFBA)</a> Salvador -Ba</p>
-        <p>Este projeto foi desenvolvido utilizando o Bootstrap</p>
-        <p>Trabalho da Disciplina Laborat√≥rio de Programa√ß√£o Web</p>
-        <p>Alunos: Jailton Pereira, Michelle Mendes, Luiz Sim√µes, Carlos Marx</p>
-      </div>
-    </footer>
+<%@ include file="include/footer.jsp"%>
 </body>
 </html>
