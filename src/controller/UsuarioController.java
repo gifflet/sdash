@@ -20,7 +20,7 @@ public class UsuarioController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("index.html");
+		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,10 +32,13 @@ public class UsuarioController extends HttpServlet {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario Retorno = usuarioDAO.autenticar(usuario);
 		if(Retorno==null){
-			RequestDispatcher erro = request.getRequestDispatcher("/verificacao.html");
+			RequestDispatcher erro = request.getRequestDispatcher("/verificacao.jsp");
 			erro.forward(request,response);
 		}
 		else{
+			Usuario usu = new Usuario();
+			usu.setEmail(email);
+			request.setAttribute("usu", usu);	
 			RequestDispatcher saida = request.getRequestDispatcher("/tarefacontroller.do?acao=inicio");
 			saida.forward(request,response);
 		}

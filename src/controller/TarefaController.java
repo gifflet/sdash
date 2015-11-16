@@ -61,6 +61,18 @@ public class TarefaController extends HttpServlet {
 			RequestDispatcher saida = request.getRequestDispatcher("home.jsp");
 			saida.forward(request,response);
 		}
+		if(acao!=null && acao.equals("final")){
+			List<Tarefa> lista = tarefaDAO.BuscarTodos();
+			request.setAttribute("lista", lista);
+			RequestDispatcher saida = request.getRequestDispatcher("pesquisarFinalizado.jsp");
+			saida.forward(request,response);
+		}
+		if(acao!=null && acao.equals("pend")){
+			List<Tarefa> lista = tarefaDAO.BuscarTodos();
+			request.setAttribute("lista", lista);
+			RequestDispatcher saida = request.getRequestDispatcher("pesquisarPendente.jsp");
+			saida.forward(request,response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,6 +86,7 @@ public class TarefaController extends HttpServlet {
 		
 		//Cria objeto tarefa e seta os valores vindo da tela
 		Tarefa tarefa = new Tarefa();
+		Tarefa tar = new Tarefa();
 		if(id!=null){
 			tarefa.setId(Integer.parseInt(id));
 		}
@@ -82,6 +95,8 @@ public class TarefaController extends HttpServlet {
 		tarefa.setFinalizado(situacao);
 		tarefa.setDataFinalizacao(finalizacao);
 		tarefa.setDescricao(mensagem);
+		tar.setFinalizado(situacao);
+		request.setAttribute("tar", tar);
 		
 		//Pede para o tDAO cadastrar no banco de dados
 		TarefaDAO tarefaDAO = new TarefaDAO();
