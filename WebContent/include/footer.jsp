@@ -6,6 +6,10 @@
         <p>Instituto de Matemática - <a href="https://www.ufba.br/" target="_blank">Universidade Federal da Bahia-(UFBA)</a> Salvador -Ba</p>
         <p>Este projeto foi desenvolvido utilizando o Bootstrap</p>
         <p>Trabalho da Disciplina Laboratório de Programação Web</p>
+<<<<<<< HEAD
+        <p>Alunos: Jailton Pereira, Michelle Mendes e Luiz Simões</p>
+=======
         <p>Alunos: Jailton Pereira, Michelle Mendes, Luiz Simões, Carlos Marx</p>
+>>>>>>> master
       </div>
     </footer>

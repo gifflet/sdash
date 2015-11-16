@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import jdbc.UsuarioDAO;
 import entidades.Usuario;
 
@@ -24,12 +23,30 @@ public class UsuarioController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		Usuario usuario = new Usuario();
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+<<<<<<< HEAD
+		if(nome.equals("1")){
+			Usuario Retorno = usuarioDAO.autenticar(usuario);
+			if(Retorno==null){
+				RequestDispatcher erro = request.getRequestDispatcher("/verificacao.jsp");
+				erro.forward(request,response);
+			}
+			else{
+				String id = Integer.toString(Retorno.getId());
+				response.sendRedirect("tarefacontroller.do?acao=list&idusu=".concat(id));
+			}
+		}
+		else{
+			usuario.setNome(nome);
+			usuarioDAO.cadastrar(usuario);
+			response.sendRedirect("index.jsp");
+=======
 		Usuario Retorno = usuarioDAO.autenticar(usuario);
 		if(Retorno==null){
 			RequestDispatcher erro = request.getRequestDispatcher("/verificacao.jsp");
@@ -41,6 +58,7 @@ public class UsuarioController extends HttpServlet {
 			request.setAttribute("usu", usu);	
 			RequestDispatcher saida = request.getRequestDispatcher("/tarefacontroller.do?acao=inicio");
 			saida.forward(request,response);
+>>>>>>> master
 		}
 	}
 

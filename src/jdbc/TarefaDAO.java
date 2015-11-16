@@ -10,7 +10,7 @@ public class TarefaDAO {
 	private Connection con = Conexao.getConnection();
 	
 	public void cadastrar(Tarefa tarefa){
-		String sql = "INSERT INTO TAREFA (nome, disciplina, situacao, finalizacao, mensagem) values (?,?,?,?,?)";
+		String sql = "INSERT INTO TAREFA (nome, disciplina, situacao, finalizacao, mensagem, auth, idusuario) values (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, tarefa.getNome());
@@ -18,9 +18,10 @@ public class TarefaDAO {
 			preparador.setString(3, tarefa.getFinalizado());
 			preparador.setString(4, tarefa.getDataFinalizacao());
 			preparador.setString(5, tarefa.getDescricao());
+			preparador.setString(6, tarefa.getAuth());
+			preparador.setInt(7, tarefa.getIdusuario());
 			preparador.execute();
 			preparador.close();
-			System.out.println("Tarefa Cadastrado com sucesso!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
@@ -57,11 +58,12 @@ public class TarefaDAO {
 		} 
 	}
 	
-	public List<Tarefa>BuscarTodos(){
-		String sql = "SELECT *FROM TAREFA";
+	public List<Tarefa>BuscarTodos(Integer idusu){
+		String sql = "SELECT *FROM TAREFA where idusuario=?";
 		List<Tarefa> lista = new ArrayList<Tarefa>();
 		try {
 			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setInt(1, idusu);
 			ResultSet resultado = preparador.executeQuery();
 			while(resultado.next()){
 				Tarefa tarefa = new Tarefa();
@@ -100,29 +102,6 @@ public class TarefaDAO {
 			e.printStackTrace();
 		}
 		return tarefa;
-	}
-	
-	public List<Tarefa>BuscarPorNome(String nome){
-		String sql = "SELECT *FROM TAREFA WHERE nome like ?";
-		List<Tarefa>lista = new ArrayList<Tarefa>();
-		try {
-			PreparedStatement preparador = con.prepareStatement(sql);
-			preparador.setString(1,"%"+nome+"%");
-			ResultSet resultado = preparador.executeQuery();
-			while(resultado.next()){
-				Tarefa tarefa = new Tarefa();
-				tarefa.setId(resultado.getInt("id"));
-				tarefa.setNome(resultado.getString("nome"));
-				tarefa.setDisciplina(resultado.getString("disciplina"));
-				tarefa.setFinalizado(resultado.getString("situacao"));
-				tarefa.setDataFinalizacao(resultado.getString("finalizacao"));
-				tarefa.setDescricao(resultado.getString("mensagem"));
-				lista.add(tarefa);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return lista;
 	}
 	
 	public void salvar(Tarefa tarefa){

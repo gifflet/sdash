@@ -2,12 +2,26 @@ package entidades;
 
 public class Tarefa {
 	private Integer id;
+	private Integer idusuario;
 	private String nome;
 	private String disciplina;
 	private String descricao;
 	private String finalizado;
 	private String dataFinalizacao;
+	private String auth;
 	
+	public Integer getIdusuario() {
+		return idusuario;
+	}
+	public void setIdusuario(Integer idusuario) {
+		this.idusuario = idusuario;
+	}
+	public String getAuth() {
+		return auth;
+	}
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
 	public Integer getId() {
 		return id;
 	}

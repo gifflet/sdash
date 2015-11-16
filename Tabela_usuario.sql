@@ -16,3 +16,4 @@ WITH (
 );
 ALTER TABLE usuario
   OWNER TO postgres;
+
