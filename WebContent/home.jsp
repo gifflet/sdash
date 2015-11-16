@@ -9,7 +9,6 @@
 		<p>O sdash é uma ferramenta desenvolvida para gerenciamento de tarefas acadêmica. O Sdash é um sistema que permite a criação, armazenamento e administração de conteúdo
 		de forma dinâmica, consistentemente organizada, permitindo que o mesmo seja modificado, removido e adicionado com facilidade. Essa ferramenta tem como objetivo gerenciar as tarefas e
 		acompanhar a cadeia de atividades do estudantes, assim como gerar relatórios de desempenho<p>
-<<<<<<< HEAD
 	</aside>
 </section>
 <br>
@@ -47,11 +46,6 @@
 	</table>
 </section>
 <br>
-=======
-		<p><a href="" class="btn btn-primary btn-large pull-right">Saiba Mais</a></p>
-	</aside>
-</section>
->>>>>>> master
 <section id="agenda">
 	<header class="page-header">
 		<h1>Agenda</h1>
@@ -60,35 +54,20 @@
 	<caption><h3>Tarefas Agendadas</h3></caption>
 	<thead>
 	<tr class="label-inverse" style="color: #fff">
-<<<<<<< HEAD
 		<th>Código</th><th>Nome</th><th>Disciplina</th><th>Situação</th><th>Mensgem</th><th>Data de Finalização</th><th><a href="tarefacontroller.do?acao=cad&idusu=<%=idusu%>">Novo Registro</a></th>
-=======
-		<th>Código</th><th>Nome</th><th>Disciplina</th><th>Situação</th><th>Mensgem</th><th>Data de Finalização</th><th>Ação</th>
->>>>>>> master
 	</tr>
 	</thead>
 	<tbody>
 	<%
-<<<<<<< HEAD
 	double cont=0, cont1=0, cont2=0, cont3=0, cont4=0;
-=======
-	int cont=0, cont1=0;
->>>>>>> master
 	List<Tarefa> lista = (List<Tarefa>)request.getAttribute("lista");
 	for (Tarefa tarefa: lista){
 		if(tarefa.getFinalizado().equals("Finalizado")){
 			%><tr class="success">
-<<<<<<< HEAD
 		<%
 		}else{
 			%><tr class="error">
 		<%
-=======
-		<%
-		}else{
-			%><tr class="error">
-		<%
->>>>>>> master
 		}
 		%>
 	<td><%=tarefa.getId()%></td>
@@ -97,13 +76,8 @@
 	<td ><%=tarefa.getFinalizado()%></td>
 	<td><%=tarefa.getDescricao()%></td>
 	<td><%=tarefa.getDataFinalizacao()%></td>
-<<<<<<< HEAD
 	<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Excluir</a>
 		| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Alterar</a>
-=======
-	<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>#agenda">Excluir</a>
-		| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>">Alterar</a>
->>>>>>> master
 	</td>
 	</tr>
 	</tbody>
@@ -116,7 +90,6 @@
 		%>
 	</table>
 </section>
-<<<<<<< HEAD
 <br>
 <section id="avaliacao">
 	<header class="page-header">
@@ -137,10 +110,10 @@
 	<tr>
 	<form action="disciplinacontroller.do?acao=aval&idusu=<%=idusu%>" method="post" class="form-signin">           	
 		<input type="hidden" readonly="readonly" name="id" size="10" value="<%=disciplina.getId()%>"/>
-	    <td><input class="input-small" type="text" value="<%=disciplina.getNome()%>" name="nome" readonly="readonly"/></td>
+	    <td><input class="input-small span2" type="text" value="<%=disciplina.getNome()%>" name="nome" readonly="readonly"/></td>
 	    <input type="hidden" class="input-block-level" value="<%=disciplina.getProfessor()%>"name="professor" required/>
 	    <input type="hidden" class="input-block-level" value="<%=disciplina.getSemestre()%>"name="semestre" required/></td>
-        <td><select class="input-medium" readonly="readonly" name="situacao">
+        <td>
           <%
 		    String estado1 = "";
 			String estado2 = "";
@@ -151,26 +124,81 @@
 				   case "Media Aritimetica": estado2 = "selected"; break;
 				   case "Media Ponderada": estado3 = "selected"; break; 			   
 			   }
-		  %>
-            <option value="Media Geometrica" <%=estado1 %>>Media Geometrica</option>
-            <option value="Media Aritimetica"<%=estado2 %>>Media Aritimetica</option>
-            <option value="Media Ponderada" <%=estado3 %>>Media Ponderada</option>
-          </select>
+		  	if(estado1.equals("selected")){%>
+		  		<input readonly="readonly" name="situacao" class="span2" type="text" value="Media Geometrica">
+            <%}
+		  	if(estado2.equals("selected")){%>
+		  		<input readonly="readonly" name="situacao" class="span2" type="text" value="Media Aritimetica">
+            <%}
+		  	if(estado3.equals("selected")){%>
+		  		<input readonly="readonly" name="situacao" class="span2" type="text" value="Media Ponderada">
+		  	<%}%>
 		</td>
 		<%
 		if(disciplina.getSituacao().equals("Media Ponderada")){%>
-	        <td><input class="span1" type="text" name="pond1" placeholder="Peso" required><input class="span1" type="text" name="nota1" value="<%=disciplina.getNota1()%>" required></td>
-			<td><input class="span1" type="text" name="pond2" placeholder="Peso" required><input class="span1" type="text" name="nota2" value="<%=disciplina.getNota2()%>" required></td>
-			<td><input class="span1" type="text" name="pond3" placeholder="Peso" required><input class="span1" type="text" name="nota3" value="<%=disciplina.getNota3()%>" required></td>
-			<td><input class="span1" type="text" name="pond4" placeholder="Peso" required><input class="span1" type="text" name="nota4" value="<%=disciplina.getNota4()%>" required></td>
-			<td><input class="span1" type="text" name="pond5" placeholder="Peso" required><input class="span1" type="text" name="nota5" value="<%=disciplina.getNota5()%>" required></td>
+	        <td><input class="span1" type="text" name="pond1" placeholder="Peso"><input class="span1" type="text" name="nota1" <%if(disciplina.getNota1()!=-1){%>
+																																			value="<%=disciplina.getNota1()%>"
+																																		  <%}
+																																			else{%>
+																																				value=""
+																																		  <%}%>></td>
+			<td><input class="span1" type="text" name="pond2" placeholder="Peso"><input class="span1" type="text" name="nota2" <%if(disciplina.getNota2()!=-1){%>
+																																			value="<%=disciplina.getNota2()%>"
+																																		  <%}
+																																			else{%>
+																																				value=""
+																																		  <%}%>></td>
+			<td><input class="span1" type="text" name="pond3" placeholder="Peso"><input class="span1" type="text" name="nota3" <%if(disciplina.getNota3()!=-1){%>
+																																			value="<%=disciplina.getNota3()%>"
+																																		  <%}
+																																			else{%>
+																																				value=""
+																																		  <%}%>></td>
+			<td><input class="span1" type="text" name="pond4" placeholder="Peso"><input class="span1" type="text" name="nota4" <%if(disciplina.getNota4()!=-1){%>
+																																			value="<%=disciplina.getNota4()%>"
+																																		  <%}
+																																			else{%>
+																																				value=""
+																																		  <%}%>></td>
+			<td><input class="span1" type="text" name="pond5" placeholder="Peso"><input class="span1" type="text" name="nota5" <%if(disciplina.getNota5()!=-1){%>
+																																			value="<%=disciplina.getNota5()%>"
+																																		  <%}
+																																			else{%>
+																																				value=""
+																																		  <%}%>></td>
 	<% }
 		else{%>
-			<td><input class="span1" type="text" name="nota1" value="<%=disciplina.getNota1()%>" required></td>
-			<td><input class="span1" type="text" name="nota2" value="<%=disciplina.getNota2()%>" required></td>
-			<td><input class="span1" type="text" name="nota3" value="<%=disciplina.getNota3()%>" required></td>
-			<td><input class="span1" type="text" name="nota4" value="<%=disciplina.getNota4()%>" required></td>
-			<td><input class="span1" type="text" name="nota5" value="<%=disciplina.getNota5()%>" required></td>
+			<td><input class="span1" type="text" name="nota1" <%if(disciplina.getNota1()!=-1){%>
+																	value="<%=disciplina.getNota1()%>"
+															  <%}
+																else{%>
+																	value=""
+															  <%}%>></td>
+															  
+			<td><input class="span1" type="text" name="nota2" <%if(disciplina.getNota2()!=-1){%>
+																	value="<%=disciplina.getNota2()%>"
+															  <%}
+																else{%>
+																	value=""
+															  <%}%>></td>
+			<td><input class="span1" type="text" name="nota3" <%if(disciplina.getNota3()!=-1){%>
+																	value="<%=disciplina.getNota3()%>"
+															  <%}
+																else{%>
+																	value=""
+															  <%}%>></td>
+			<td><input class="span1" type="text" name="nota4" <%if(disciplina.getNota4()!=-1){%>
+																	value="<%=disciplina.getNota4()%>"
+															  <%}
+																else{%>
+																	value=""
+															  <%}%>></td>
+			<td><input class="span1" type="text" name="nota5" <%if(disciplina.getNota5()!=-1){%>
+																	value="<%=disciplina.getNota5()%>"
+															  <%}
+																else{%>
+																	value=""
+															  <%}%>></td>
 	<%
 		}
 		%>
@@ -194,19 +222,16 @@
 	</table>
 </section>
 <br>
-=======
->>>>>>> master
 <section id="estatistica">
 	<header class="page-header">
 		<h1>Estatística</h1>
 	</header>
 	<h3>Tarefas</h3>
-<<<<<<< HEAD
 	<%=String.format("%.2f", 100*cont/(cont1+cont))%>% Concluido<div class="progress progress-success progress-striped">
   			<div class="bar" style="width: <%=(100*cont/(cont1+cont))%>%;"></div>
   		</div>
   	<%=String.format("%.2f", 100*cont1/(cont1+cont))%>% Pendente<div class="progress progress-danger progress-striped">
-  			<div class="bar" style="width: <%=(100*cont1/(cont1+cont))%>%;"></div>
+  		<div class="bar" style="width: <%=(100*cont1/(cont1+cont))%>%;"></div>	
   		</div>
   		Total de Tarefas: <%=cont1+cont%><br><br>
   	<h3>Desempenho</h3>
@@ -216,16 +241,6 @@
   	Aproveitamente: <%=String.format("%.2f", 100*cont3/(cont3+cont4))%>% <br><br>	
 </section>
 <br>
-=======
-	<%=(100*cont/(cont1+cont))%>% Concluido<div class="progress progress-success progress-striped">
-  			<div class="bar" style="width: <%=(100*cont/(cont1+cont))%>%;"></div>
-  		</div>
-  	<%=(100*cont1/(cont1+cont))%>% Pendente<div class="progress progress-danger progress-striped">
-  			<div class="bar" style="width: <%=(100*cont1/(cont1+cont))%>%;"></div>
-  		</div>
-  		Total de Tarefas: <%=cont1+cont%>
-</section>	
->>>>>>> master
 		</div>
 	</div>
 </div>

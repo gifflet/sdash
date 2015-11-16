@@ -1,4 +1,45 @@
-<%@ include file="include/header.jsp"%>
+<%@ include file="include/head.jsp"%>
+<%String idusu = request.getParameter("idusu");%>
+<body>
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<!--btn-navbar esta classe é usada como alternador pra o conteudo colaps¡vel-->
+				<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="javascript:void(0)" onclick="campoInvalido();" class="brand">Sistema Sdash</a>
+				<!--Tudo que for escondido a menos de 940px-->
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="dropdown">							
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tarefas<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="tarefacontroller.do?acao=final&idusu=<%=idusu%>">Buscar por Finalizado</a></li>
+									<li><a href="tarefacontroller.do?acao=pend&idusu=<%=idusu%>">Buscar por Pendente</a></li>
+								</ul>
+						</li>
+						<li><a href="javascript:void(0)" onclick="campoInvalido();">Disciplina</a></li>
+						<li><a href="javascript:void(0)" onclick="campoInvalido();">Agenda</a></li>
+						<li><a href="javascript:void(0)" onclick="campoInvalido();">Avaliação</a></li>
+						<li><a href="javascript:void(0)" onclick="campoInvalido();">Estatística</a></li>
+						<li><a href="usucontroller.do">Sair</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<header class="jumbotron subhead">
+		<div class="container" style="z-index:1;">
+			<h1>Student Dashboard - Sdash</h1>
+			<p>Alunos: Jailton Pereira e Michelle Mendes</p>
+		</div>
+	</header>
+		<div class="container">
+			<div class="row">				
+				<div class="span12">
 <%@ page import ="java.util.List"%>		
 <section id="agenda">			
 	<table class="table table-bordered table-hover">
@@ -20,13 +61,8 @@
 				<td ><%=tarefa.getFinalizado()%></td>
 				<td><%=tarefa.getDescricao()%></td>
 				<td><%=tarefa.getDataFinalizacao()%></td>
-<<<<<<< HEAD
 				<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>&idusu=<%=idusu%>#agenda">Excluir</a>
 					| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Alterar</a>
-=======
-				<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>#agenda">Excluir</a>
-					| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>">Alterar</a>
->>>>>>> master
 				</td>
 				</tr>
 			<%
@@ -37,11 +73,7 @@
 		}
 		%>
 	</table>
-<<<<<<< HEAD
-	<a class="btn btn-primary" href="tarefacontroller.do?acao=list&idusu=<%=idusu%>">Cancelar Pesquisa</a>
-=======
-	<a class="btn btn-primary" href="tarefacontroller.do?acao=list">Cancelar Pesquisa</a>
->>>>>>> master
+	<a class="btn btn-primary" href="tarefacontroller.do?acao=list&idusu=<%=idusu%>">Concluir Pesquisa</a>
 </section>		
 		</div>
 	</div>

@@ -60,3 +60,7 @@
     }
     window.onload=initbox1
     
+    function campoInvalido(){       
+       alert("Atenção! Concluir a Pesquisa");
+    }  
+    

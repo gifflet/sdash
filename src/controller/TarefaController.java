@@ -70,19 +70,11 @@ public class TarefaController extends HttpServlet {
 			saida.forward(request,response);
 		}
 		if(acao!=null && acao.equals("final")){
-<<<<<<< HEAD
-=======
-			List<Tarefa> lista = tarefaDAO.BuscarTodos();
->>>>>>> master
 			request.setAttribute("lista", lista);
 			RequestDispatcher saida = request.getRequestDispatcher("pesquisarFinalizado.jsp");
 			saida.forward(request,response);
 		}
 		if(acao!=null && acao.equals("pend")){
-<<<<<<< HEAD
-=======
-			List<Tarefa> lista = tarefaDAO.BuscarTodos();
->>>>>>> master
 			request.setAttribute("lista", lista);
 			RequestDispatcher saida = request.getRequestDispatcher("pesquisarPendente.jsp");
 			saida.forward(request,response);

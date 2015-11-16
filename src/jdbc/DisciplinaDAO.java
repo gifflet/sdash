@@ -116,7 +116,7 @@ public class DisciplinaDAO {
 				disciplina.setNota3(resultado.getDouble("nota3"));
 				disciplina.setNota4(resultado.getDouble("nota4"));
 				disciplina.setNota5(resultado.getDouble("nota5"));
-				disciplina.setResultado(resultado.getDouble("resultado"));				
+				disciplina.setResultado(resultado.getDouble("resultado"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
