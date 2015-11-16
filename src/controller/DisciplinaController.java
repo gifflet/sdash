@@ -83,57 +83,68 @@ public class DisciplinaController extends HttpServlet {
 			String pond3 = request.getParameter("pond3");
 			String pond4 = request.getParameter("pond4");
 			String pond5 = request.getParameter("pond5");
-			p1 = (Double.parseDouble(pond1));
-			p2 = (Double.parseDouble(pond2));
-			p3 = (Double.parseDouble(pond3));
-			p4 = (Double.parseDouble(pond4));
-			p5 = (Double.parseDouble(pond5));
+			if(!pond1.equals("")){
+				p1 = (Double.parseDouble(pond1));
+				request.setAttribute("p1", p1);	
+			}
+			if(!pond2.equals("")){
+				p2 = (Double.parseDouble(pond2));
+			}
+			if(!pond3.equals("")){
+				p3 = (Double.parseDouble(pond3));
+			}
+			if(!pond4.equals("")){
+				p4 = (Double.parseDouble(pond4));
+			}
+			if(!pond5.equals("")){
+				p5 = (Double.parseDouble(pond5));
+			}
 		}
 				
 		//Cria objeto tarefa e seta os valores vindo da tela
 		Disciplina disciplina = new Disciplina();
-		double n1 = (Double.parseDouble(nota1));
-		double n2 = (Double.parseDouble(nota2));
-		double n3 = (Double.parseDouble(nota3));
-		double n4 = (Double.parseDouble(nota4));
-		double n5 = (Double.parseDouble(nota5));
-		if(n1!=0){
+		if(!nota1.equals("")){
+			double n1 = (Double.parseDouble(nota1));
 			valor++;
 			soma = n1;
 			mult = n1;
 			pond = (p1/10)*n1;
 		}
-		if(n2!=0){
+		if(!nota2.equals("")){
+			double n2 = (Double.parseDouble(nota2));
 			valor++;
 			soma = soma+n2;
 			mult = mult*n2;
 			pond = pond+(p2/10)*n2;
 		}
-		if(n3!=0){
+		if(!nota3.equals("")){
+			double n3 = (Double.parseDouble(nota3));
 			valor++;
 			soma = soma+n3;
 			mult = mult*n3;
 			pond = pond+(p3/10)*n3;
 		}
-		if(n4!=0){
+		if(!nota4.equals("")){
+			double n4 = (Double.parseDouble(nota4));
 			valor++;
 			soma = soma+n4;
 			mult = mult*n4;
 			pond = pond+(p4/10)*n4;
 		}
-		if(n5!=0){
+		if(!nota5.equals("")){
+			double n5 = (Double.parseDouble(nota5));
 			valor++;
 			soma = soma+n5;
 			mult = mult*n5;
 			pond = pond+(p5/10)*n5;
 		}
-		if(situacao.equals("Media Aritimetica")){
+		if(situacao.equals("Media Aritimetica")&&(valor!=0)){
 			media=soma/valor;
 		}
-		if(situacao.equals("Media Geometrica")){
+		if(situacao.equals("Media Geometrica")&&(valor!=0)){
 			media=Math.pow(mult, 1/valor);
 		}
-		if(situacao.equals("Media Ponderada")){
+		if(situacao.equals("Media Ponderada")&&(valor!=0)){
 			media=pond;
 		}
 		
@@ -145,11 +156,36 @@ public class DisciplinaController extends HttpServlet {
 		disciplina.setProfessor(professor);
 		disciplina.setSemestre(semestre);
 		disciplina.setSituacao(situacao);
-		disciplina.setNota1(Double.parseDouble(nota1));
-		disciplina.setNota2(Double.parseDouble(nota2));
-		disciplina.setNota3(Double.parseDouble(nota3));
-		disciplina.setNota4(Double.parseDouble(nota4));
-		disciplina.setNota5(Double.parseDouble(nota5));
+		if(!nota1.equals("")){
+			disciplina.setNota1(Double.parseDouble(nota1));
+		}
+		else{
+			disciplina.setNota1(-1);
+		}
+		if(!nota2.equals("")){
+			disciplina.setNota2(Double.parseDouble(nota2));
+		}
+		else{
+			disciplina.setNota2(-1);
+		}
+		if(!nota3.equals("")){
+			disciplina.setNota3(Double.parseDouble(nota3));
+		}
+		else{
+			disciplina.setNota3(-1);
+		}
+		if(!nota4.equals("")){
+			disciplina.setNota4(Double.parseDouble(nota4));
+		}
+		else{
+			disciplina.setNota4(-1);
+		}
+		if(!nota5.equals("")){
+			disciplina.setNota5(Double.parseDouble(nota5));
+		}
+		else{
+			disciplina.setNota5(-1);
+		}
 		disciplina.setResultado(media);
 		
 		//Pede para o tDAO cadastrar no banco de dados
