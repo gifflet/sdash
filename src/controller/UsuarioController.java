@@ -30,6 +30,7 @@ public class UsuarioController extends HttpServlet {
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+<<<<<<< HEAD
 		if(nome.equals("1")){
 			Usuario Retorno = usuarioDAO.autenticar(usuario);
 			if(Retorno==null){
@@ -45,6 +46,19 @@ public class UsuarioController extends HttpServlet {
 			usuario.setNome(nome);
 			usuarioDAO.cadastrar(usuario);
 			response.sendRedirect("index.jsp");
+=======
+		Usuario Retorno = usuarioDAO.autenticar(usuario);
+		if(Retorno==null){
+			RequestDispatcher erro = request.getRequestDispatcher("/verificacao.jsp");
+			erro.forward(request,response);
+		}
+		else{
+			Usuario usu = new Usuario();
+			usu.setEmail(email);
+			request.setAttribute("usu", usu);	
+			RequestDispatcher saida = request.getRequestDispatcher("/tarefacontroller.do?acao=inicio");
+			saida.forward(request,response);
+>>>>>>> master
 		}
 	}
 

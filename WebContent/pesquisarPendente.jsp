@@ -20,8 +20,13 @@
 				<td ><%=tarefa.getFinalizado()%></td>
 				<td><%=tarefa.getDescricao()%></td>
 				<td><%=tarefa.getDataFinalizacao()%></td>
+<<<<<<< HEAD
 				<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>&idusu=<%=idusu%>#agenda">Excluir</a>
 					| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Alterar</a>
+=======
+				<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>#agenda">Excluir</a>
+					| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>">Alterar</a>
+>>>>>>> master
 				</td>
 				</tr>
 			<%
@@ -32,7 +37,11 @@
 		}
 		%>
 	</table>
+<<<<<<< HEAD
 		<a class="btn btn-primary" href="tarefacontroller.do?acao=list&idusu=<%=idusu%>">Cancelar Pesquisa</a>
+=======
+		<a class="btn btn-primary" href="tarefacontroller.do?acao=list">Cancelar Pesquisa</a>
+>>>>>>> master
 		</section>		
 		</div>
 	</div>

@@ -9,6 +9,7 @@
 		<p>O sdash é uma ferramenta desenvolvida para gerenciamento de tarefas acadêmica. O Sdash é um sistema que permite a criação, armazenamento e administração de conteúdo
 		de forma dinâmica, consistentemente organizada, permitindo que o mesmo seja modificado, removido e adicionado com facilidade. Essa ferramenta tem como objetivo gerenciar as tarefas e
 		acompanhar a cadeia de atividades do estudantes, assim como gerar relatórios de desempenho<p>
+<<<<<<< HEAD
 	</aside>
 </section>
 <br>
@@ -46,6 +47,11 @@
 	</table>
 </section>
 <br>
+=======
+		<p><a href="" class="btn btn-primary btn-large pull-right">Saiba Mais</a></p>
+	</aside>
+</section>
+>>>>>>> master
 <section id="agenda">
 	<header class="page-header">
 		<h1>Agenda</h1>
@@ -54,20 +60,35 @@
 	<caption><h3>Tarefas Agendadas</h3></caption>
 	<thead>
 	<tr class="label-inverse" style="color: #fff">
+<<<<<<< HEAD
 		<th>Código</th><th>Nome</th><th>Disciplina</th><th>Situação</th><th>Mensgem</th><th>Data de Finalização</th><th><a href="tarefacontroller.do?acao=cad&idusu=<%=idusu%>">Novo Registro</a></th>
+=======
+		<th>Código</th><th>Nome</th><th>Disciplina</th><th>Situação</th><th>Mensgem</th><th>Data de Finalização</th><th>Ação</th>
+>>>>>>> master
 	</tr>
 	</thead>
 	<tbody>
 	<%
+<<<<<<< HEAD
 	double cont=0, cont1=0, cont2=0, cont3=0, cont4=0;
+=======
+	int cont=0, cont1=0;
+>>>>>>> master
 	List<Tarefa> lista = (List<Tarefa>)request.getAttribute("lista");
 	for (Tarefa tarefa: lista){
 		if(tarefa.getFinalizado().equals("Finalizado")){
 			%><tr class="success">
+<<<<<<< HEAD
 		<%
 		}else{
 			%><tr class="error">
 		<%
+=======
+		<%
+		}else{
+			%><tr class="error">
+		<%
+>>>>>>> master
 		}
 		%>
 	<td><%=tarefa.getId()%></td>
@@ -76,8 +97,13 @@
 	<td ><%=tarefa.getFinalizado()%></td>
 	<td><%=tarefa.getDescricao()%></td>
 	<td><%=tarefa.getDataFinalizacao()%></td>
+<<<<<<< HEAD
 	<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Excluir</a>
 		| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>&idusu=<%=idusu%>">Alterar</a>
+=======
+	<td><a href="tarefacontroller.do?acao=exc&id=<%=tarefa.getId()%>#agenda">Excluir</a>
+		| <a href="tarefacontroller.do?acao=alt&id=<%=tarefa.getId()%>">Alterar</a>
+>>>>>>> master
 	</td>
 	</tr>
 	</tbody>
@@ -90,6 +116,7 @@
 		%>
 	</table>
 </section>
+<<<<<<< HEAD
 <br>
 <section id="avaliacao">
 	<header class="page-header">
@@ -167,11 +194,14 @@
 	</table>
 </section>
 <br>
+=======
+>>>>>>> master
 <section id="estatistica">
 	<header class="page-header">
 		<h1>Estatística</h1>
 	</header>
 	<h3>Tarefas</h3>
+<<<<<<< HEAD
 	<%=String.format("%.2f", 100*cont/(cont1+cont))%>% Concluido<div class="progress progress-success progress-striped">
   			<div class="bar" style="width: <%=(100*cont/(cont1+cont))%>%;"></div>
   		</div>
@@ -186,6 +216,16 @@
   	Aproveitamente: <%=String.format("%.2f", 100*cont3/(cont3+cont4))%>% <br><br>	
 </section>
 <br>
+=======
+	<%=(100*cont/(cont1+cont))%>% Concluido<div class="progress progress-success progress-striped">
+  			<div class="bar" style="width: <%=(100*cont/(cont1+cont))%>%;"></div>
+  		</div>
+  	<%=(100*cont1/(cont1+cont))%>% Pendente<div class="progress progress-danger progress-striped">
+  			<div class="bar" style="width: <%=(100*cont1/(cont1+cont))%>%;"></div>
+  		</div>
+  		Total de Tarefas: <%=cont1+cont%>
+</section>	
+>>>>>>> master
 		</div>
 	</div>
 </div>

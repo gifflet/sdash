@@ -1,5 +1,8 @@
 <%@ include file="include/head.jsp"%>
+<<<<<<< HEAD
 <%@ page import ="java.util.List"%>
+=======
+>>>>>>> master
 <link rel="stylesheet" href="css/style2.css"/>
 <body>
 <%
@@ -16,11 +19,15 @@ List<Disciplina> disclista = (List<Disciplina>)request.getAttribute("disclista")
             	<label for="nome">Nome:</label>
 	            <input class="input-block-level" type="text" value="<%=tarefa.getNome()%>" name="nome" required/>
 	            <label for="nome">Disciplina:</label>
+<<<<<<< HEAD
 	            <select name="disciplina">
 	            	<%for (Disciplina disciplina: disclista){%>
 	            		<option><%=disciplina.getNome()%></option>
 	            	<%}%>
 	            </select>
+=======
+	            <input class="input-block-level" type="text" value="<%=tarefa.getDisciplina()%>"name="disciplina" required/>
+>>>>>>> master
             <label for="situacao">Situação:</label>
                 <select name="situacao">
                 <%
@@ -40,7 +47,11 @@ List<Disciplina> disclista = (List<Disciplina>)request.getAttribute("disclista")
             <textarea class="input-block-level" rows="8" cols="100" name="mensagem" required></textarea>
             <input class="btn btn-primary" type="submit" name="submit" value="Enviar">
             <button class="btn btn-primary" type="reset" name="reset">Limpar</button>
+<<<<<<< HEAD
             <a class="btn btn-primary" href="tarefacontroller.do?acao=list&idusu=<%=idusu%>">Cancelar</a>
+=======
+            <a class="btn btn-primary" href="tarefacontroller.do?acao=list">Cancelar</a>
+>>>>>>> master
             </fieldset>
     </form>
 </body>
