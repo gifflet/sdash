@@ -9,6 +9,7 @@ Algumas configurações antes de executar o projeto:
 
 # sdash
 Academic work of subject Web Programming Laboratory, Department of Computer Science, Federal University of Bahia.
+
 Some settings before to run this project:
 1. Install PostgreSQL and create a new database with the name "TrabLabWeb";
 2. Run the scripts "Tabela_usuario.sql" and "Tabela_tarefa.sql", respectively, to create the tables "usuario" and "tarefas" in database;
