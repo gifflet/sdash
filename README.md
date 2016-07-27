@@ -1,9 +1,16 @@
 # sdash
+Trabalho da disciplina MATC84 - Laboratório de Programação Web
+Departamento de Ciência da Computação - Universidade Federal da Bahia
 
-Primeira Parte do Trabalho da disciplina Laboratório de Programação Web
-Universidade Federal da Bahia
+Algumas configurações antes de executar o projeto:
+1. Instalar o SGBD PostgreSQL e criar um banco de dados chamado "TrabLabWeb";
+2. Execute os scripts "Tabela_usuario.sql" e "Tabela_tarefa.sql", respectivamente, para criar as tabelas "usuario" e "tarefa" no banco de dados;
+3. Crie um usuario no banco de dados antes de logar no sistema.
 
-Para o sistema funcionar, primeiro deve instalar o SGBD PostgreSQL e deve criar um banco de dados chamado "TrabLabWeb".
-Precisa criar duas tabelas no banco TrabLabWeb, uma chamada de "usuario" e outra "tarefa", o SQL para fazer isso vc encontra no arquivo "usuario.sql" e "tarefa.sql" respectivamente.
+# sdash
+Academic work of subject Web Programming Laboratory, Department of Computer Science, Federal University of Bahia.
+Some settings before to run this project:
+1. Install PostgreSQL and create a new database with the name "TrabLabWeb";
+2. Run the scripts "Tabela_usuario.sql" and "Tabela_tarefa.sql", respectively, to create the tables "usuario" and "tarefas" in database;
+3. Create an user in the table "usuario" before to login in the system.
 
-Para logar no sistema deve criar primeiro um usuario no banco de dados.
