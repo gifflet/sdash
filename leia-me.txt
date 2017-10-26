@@ -1,3 +1,0 @@
-Para o sistema funcionar, primeiro deve instalar o SGBD PostgreSQL
-E deve criar um banco de dados chamado "TrabLabWeb".
-Precisa criar três tabelas no banco TrabLabWeb, uma chamada de "usuario" , "tarefa" e "disciplina" o SQL para criar as tabelas no banco encontra-se nos arquivos "usuario.sql", "tarefa.sql" e "disciplina.sql" respectivamente.. 
