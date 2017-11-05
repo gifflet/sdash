@@ -112,4 +112,27 @@ public class TarefaDAO {
 			cadastrar(tarefa);
 		}
 	}
+
+	public List<Tarefa> BuscarPorNome(String nome) {
+		String sql = "SELECT * FROM TAREFA where nome LIKE '?'";
+		List<Tarefa> lista = new ArrayList<Tarefa>();
+		try {
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setString(1, nome);
+			ResultSet resultado = preparador.executeQuery();
+			while(resultado.next()){
+				Tarefa tarefa = new Tarefa();
+				tarefa.setId(resultado.getInt("id"));
+				tarefa.setNome(resultado.getString("nome"));
+				tarefa.setDisciplina(resultado.getString("disciplina"));
+				tarefa.setFinalizado(resultado.getString("situacao"));
+				tarefa.setDataFinalizacao(resultado.getString("finalizacao"));
+				tarefa.setDescricao(resultado.getString("mensagem"));
+				lista.add(tarefa);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
 }
