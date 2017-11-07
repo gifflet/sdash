@@ -14,3 +14,5 @@ Some settings before to run this project:
 1. Install PostgreSQL and create a new database with the name "TrabLabWeb";
 2. Run the scripts "sdash.sql" to create the necessary tables in database;
 3. Create an user in the table "usuario" before to login in the system.
+
+[Documentation in Portuguese](https://github.com/mmsdivino/sdash/wiki)
